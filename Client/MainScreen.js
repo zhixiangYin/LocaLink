@@ -23,7 +23,7 @@ const MainScreen = ({navigation}) => {
     const response = await fetch(`http://192.168.0.157:8080/api/users/${userId}`);
     const userData = await response.json();
     if (response.ok) {
-      const imageUrl = `http://192.168.0.157:8080/api/images/${userData.userProfileImage}`;
+      const imageUrl = `http://192.168.0.157:8080/api/images/${userId}/${userData.userProfileImage}`;
       console.log("Image URL:", imageUrl);
       const imageResponse = await fetch(imageUrl);
       if (imageResponse.ok) {

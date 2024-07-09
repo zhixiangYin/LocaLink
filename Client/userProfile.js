@@ -10,7 +10,7 @@ if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental
 const UserProfile = ({navigation}) => {
   const [imageName, setImagename] = useState(null);
   const [username, setUsername] = useState('');
-
+  const [userId, setUserId] = useState(null);
   // Set inside UserProfile component, for example, at the beginning of the component
   React.useLayoutEffect(() => {
       navigation.setOptions({
@@ -24,10 +24,11 @@ const UserProfile = ({navigation}) => {
           // Fetching username
           const fetchedUsername = await getUsername();
           setUsername(fetchedUsername);
-  
+          // Fetching userID
+          const fetchedUserId = await getUserId();
+          setUserId(fetchedUserId);
           // Fetching image name
-          const userId = await getUserId();
-          const response = await fetch(`http://192.168.0.157:8080/api/users/${userId}`);
+          const response = await fetch(`http://192.168.0.157:8080/api/users/${fetchedUserId}`);
           const userData = await response.json();
           if (response.ok) {
             setImagename(userData.userProfileImage); // Ensure 'profileImage' is the correct key
@@ -62,7 +63,7 @@ const UserProfile = ({navigation}) => {
             'Content-Type': 'multipart/form-data',
           },
         });
-    
+        
         const responseData = await response.json();
         if (response.ok) {
           setImagename(responseData);
@@ -70,7 +71,7 @@ const UserProfile = ({navigation}) => {
           alert('Failed to upload image: ' + responseData.message);
         }
       } catch (error) {
-        console.error('Error uploading image:', error);
+        //console.error('Error uploading image:', error);
         alert('Error uploading image');
       }
     };
@@ -103,7 +104,7 @@ const UserProfile = ({navigation}) => {
       <TouchableOpacity style={styles.imagePicker} onPress={pickImage}>
         
         {imageName ? (
-          <Image source={{ uri: `http://192.168.0.157:8080/api/images/${imageName}` }} style={styles.profileImage} />            
+          <Image source={{ uri: `http://192.168.0.157:8080/api/images/${userId}/${imageName}` }} style={styles.profileImage} />            
         ) : (
           <View style={styles.emptyImage}>
             <Text style={styles.uploadText}>Tap to upload</Text>

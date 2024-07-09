@@ -7,7 +7,8 @@ const fs = require('fs');
 // Set up storage configuration
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
-        const uploadDir = path.join(__dirname, '../uploads'); // Correct path
+        const userId = req.params.userId; //get user id
+        const uploadDir = path.join(__dirname, `../uploads/${userId}`); // Correct path
         if (!fs.existsSync(uploadDir)) {
             fs.mkdirSync(uploadDir, { recursive: true }); // Create the directory if it doesn't exist
         }

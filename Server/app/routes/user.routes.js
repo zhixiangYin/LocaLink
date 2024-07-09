@@ -29,5 +29,5 @@ module.exports = function(app) {
   app.get('/api/users/:userId', controller.getImagename);
 
   // Route to get user profile image
-  app.get('/api/images/:imageName', controller.getProfileImage);
+  app.get('/api/images/:userId/:imageName', controller.getProfileImage);
 };

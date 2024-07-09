@@ -38,7 +38,7 @@ exports.updateProfileImage = async (req, res) => {
     }
 
     // Delete the old image if it exists
-    const oldImagePath = path.join(__dirname, '../uploads', user.userProfileImage);
+    const oldImagePath = path.join(__dirname, `../uploads/${userId}`, user.userProfileImage);
     if (user.userProfileImage && fs.existsSync(oldImagePath)) {
       fs.unlinkSync(oldImagePath);
     }
@@ -55,8 +55,9 @@ exports.updateProfileImage = async (req, res) => {
 //return user data
 exports.getProfileImage = async (req, res) => {
   const imageName = req.params.imageName;
-  const imagePath = path.join(__dirname, '../uploads', imageName);
-
+  const userId = req.params.userId;
+  const imagePath = path.join(__dirname, `../uploads/${userId}`, imageName);
+  //console.log("the image path: " +  imagePath);
   // Check if file exists
   fs.access(imagePath, fs.constants.F_OK, (err) => {
     if (err) {
