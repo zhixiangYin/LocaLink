@@ -1,0 +1,52 @@
+{
+  "expo": {
+    "name": "LocaLink",
+    "slug": "LocaLink",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/animations/spalsh_firstframe.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#272727"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.zhixiangyin.LocaLink"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#090909"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "@rnmapbox/maps",
+        {
+          "RNMapboxMapsImpl": "mapbox",
+          "RNMapboxMapsDownloadToken": "sk.eyJ1IjoiemhpeGlhbmcxMTEiLCJhIjoiY2x2NzM0NXVqMDVuNjJscXZ5cmxzZWR6eSJ9.0kaoSt_9lsOaufEv5JSeig"
+        }
+      ],
+      "expo-secure-store"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "92eccc55-5a14-4b97-a85e-92b10efaf001"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/92eccc55-5a14-4b97-a85e-92b10efaf001"
+    }
+  }
+}
