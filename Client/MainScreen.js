@@ -5,9 +5,10 @@ import MapboxGL, { Camera } from '@rnmapbox/maps';
 import * as Location from 'expo-location';
 import { getUserId} from './auth';
 import { useFocusEffect } from '@react-navigation/native';
+import {MAPBOX_API} from '@env';
 
 
-MapboxGL.setAccessToken('pk.eyJ1IjoiemhpeGlhbmcxMTEiLCJhIjoiY2x2NzIxaWE1MDU0NjJqb2FuMzN4NGZ1bCJ9.ShPyuLCkJ4FdjR6A5-IYpg');
+MapboxGL.setAccessToken(MAPBOX_API);
 
 const defaultUserIcon = require('./assets/userImage.png'); // Path to your default image
 
