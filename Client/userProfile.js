@@ -96,6 +96,7 @@ const UserProfile = ({navigation}) => {
     
     const handleLogout = async () => {
       await logout(); // Call the logout function from auth.js
+      navigation.navigate('MainScreen', { reset: true }); // Navigate to MainScreen to reset its state
       navigation.replace('Login'); // Navigate to the LoginScreen
     };
 
@@ -158,6 +159,7 @@ const styles = StyleSheet.create({
     width: '100%',
     position: 'absolute',
     bottom: 10,
+    paddingBottom: 20,
   },
   uploadText: {
     color: '#fff', // Example color for text, change as needed
