@@ -24,14 +24,14 @@ const MainScreen = ({navigation}) => {
     const userData = await response.json();
     if (response.ok) {
       const imageUrl = `http://192.168.0.157:8080/api/images/${userId}/${userData.userProfileImage}`;
-      console.log("Image URL:", imageUrl);
+      //console.log("Image URL:", imageUrl);
       const imageResponse = await fetch(imageUrl);
       if (imageResponse.ok) {
         // Compare the new URL with the current one
         if (userIcon.uri !== imageUrl) {
           setUserIcon({ uri: imageUrl });
         }
-        console.log("Custom icon set:", imageUrl);
+        //console.log("Custom icon set:", imageUrl);
       } else {
         //console.error('Failed to load image:', imageUrl);
         setUserIcon(defaultUserIcon);
@@ -80,7 +80,6 @@ const MainScreen = ({navigation}) => {
     navigation.navigate('userProfile');
   };
 
-  //console.log(followUserLocation);
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={goToUserProfile} style={styles.profileButton}>
@@ -127,7 +126,11 @@ const MainScreen = ({navigation}) => {
             ref={ref => (this.markerRef = ref)}
             id="userLocationAnnotation"
             coordinate={[location.longitude, location.latitude]}
+            //set on/de selected will trigger camera follow user
             onSelected={()=>{
+              setFollowUserLocation(true);
+            }}
+            onDeselected={()=>{
               setFollowUserLocation(true);
             }}                 
           >        
