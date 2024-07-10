@@ -52,7 +52,7 @@ exports.updateProfileImage = async (req, res) => {
     res.status(500).send({ message: "Error updating user profile image." });
   }
 };
-//return user data
+//return userprofile image
 exports.getProfileImage = async (req, res) => {
   const imageName = req.params.imageName;
   const userId = req.params.userId;
